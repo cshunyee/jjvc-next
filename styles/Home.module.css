@@ -1,116 +1,500 @@
-.container {
-  padding: 0 2rem;
+.imageSection .img {
+  /* height: 700px !important;
+  width: auto !important; */
+  max-height: 70% !important;
+  min-height: 70% !important;
+  margin: 0 !important;
+  z-index: 1;
+  background-color: rgba(0,0,0,0.5);
 }
 
-.main {
-  min-height: 100vh;
-  padding: 4rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer {
-  display: flex;
-  flex: 1;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-}
-
-.title a {
-  color: #0070f3;
-  text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
+.imageSection .text {
+  z-index: 3;
+  position: absolute;
+  left: 50%;
+  top: 50vw;
+  transform: translate(-50%, -28vw);
+  color: whitesmoke;
+  text-align: center;
+  width: 100%;
+  padding: 30px 100px;
 }
 
 .title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
+  font-size: 3rem;
+  font-family: 'Gloria Hallelujah', cursive;
 }
 
-.title,
-.description {
+.titleChinese {
+  font-size: 3rem;
+  font-family: 'Ma Shan Zheng', cursive;
+}
+
+.imageSection .blackDrop {
+  max-height: 40vw;
+  min-height: 40vw;
+  max-width: 100%;
+  min-width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+}
+
+.title-1 {
+  height: 10vh;
+  background-color: #fafafa;
+  z-index: 4;
   text-align: center;
+  padding: 10vh;
+  font-size: 2rem;
+  font-family: 'Ma Shan Zheng', cursive;
+  transform: translateY(-10vh);
 }
 
-.description {
-  margin: 4rem 0;
-  line-height: 1.5;
-  font-size: 1.5rem;
-}
-
-.code {
-  background: #fafafa;
+hr.breakline {
+  border: 2px solid #fa9f0a;
   border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
+  width: 30%;
+  margin-left: 35%;
 }
 
-.grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
+.detailSection {
+  background-color: #fafafa;
+  width: 100%;
+  z-index: 3;
+  padding: 30px;
+  transform: translateY(-10vh);
 }
 
 .card {
-  margin: 1rem;
-  padding: 1.5rem;
-  text-align: left;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
-}
-
-.card:hover,
-.card:focus,
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
-}
-
-.card h2 {
-  margin: 0 0 1rem 0;
+  width: 80%;
+  background-color: #999497;
+  border-color: #999497;
+  color: #fafafa;
+  text-align: center;
+  font-family: 'Ma Shan Zheng', cursive;
   font-size: 1.5rem;
+  margin: 0 10% !important;
 }
 
-.card p {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
+.card-title {
+  width: 30%;
+  border-bottom: 2px solid #fa9f0a;
+  border-radius: 5px;
+  padding-bottom: 15px;
+  font-family: 'Ma Shan Zheng', cursive;
+  font-size: 1.5rem;
+  margin: 0 auto 15px auto;
+  display: block;
 }
 
-.logo {
-  height: 1em;
-  margin-left: 0.5rem;
+.text-center {
+  text-align: center;
 }
 
-@media (max-width: 600px) {
-  .grid {
+.yellow-button {
+  background-color: #d9d99c;
+  border-color: #d9d99c;
+  color: #fafafa;
+  width: 6rem;
+}
+
+.button {
+  margin: 0 10px;
+  transition: all 0.5s ease-out;
+  font-family: 'Ma Shan Zheng', cursive;
+}
+
+.button span {
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
+.button:hover {
+  transform: scale(1.1);
+}
+
+.green-button:hover {
+  opacity: 1.3;
+  background-color: #7ead7d;
+  border-color: #7ead7d;
+  color: #fafafa;
+}
+
+.yellow-button:hover {
+  opacity: 1.3;
+  background-color: #bdbd79;
+  border-color: #bdbd79;
+  color: #fafafa;
+}
+
+.green-button:active {
+  opacity: 1.3;
+  background-color: #a4d9a3;
+  border-color: #a4d9a3;
+  color: #fafafa;
+}
+
+.yellow-button:active {
+  opacity: 1.3;
+  background-color: #d9d99c;
+  border-color: #d9d99c;
+  color: #fafafa;
+}
+
+.green-button {
+  background-color: #a4d9a3;
+  border-color: #a4d9a3;
+  color: #fafafa;
+  width: 6rem;
+}
+
+.title-2 {
+  height: 10vh;
+  background-color: #fff9f0;
+  z-index: 4;
+  text-align: center;
+  padding: 10vh;
+  font-size: 2rem;
+  font-family: 'Ma Shan Zheng', cursive;
+  transform: translateY(-10vh);
+}
+
+.loginSection {
+  background-color: #fff9f0;
+  height: 30vh;
+  width: 100%;
+  z-index: 3;
+  padding: 30px;
+  transform: translateY(-10vh);
+  text-align: center;
+}
+
+.footer {
+  position: relative;
+  top: -5vh;
+  width: 100%;
+  text-align: center;
+  font-family: 'Ma Shan Zheng', cursive;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 410px) {
+  hr.breakline {
+    border: 2px solid #fa9f0a;
+    border-radius: 5px;
+    width: 30%;
+    margin-left: 35%;
+  }
+
+  .title {
+    font-size: 1.2rem;
+    display: none;
+  }
+
+  .titleChinese {
+    font-size: 1.2rem;
+  }
+
+  .imageSection .text {
+    transform: translate(-50%, -35vw);
+    padding: 30px;
+  }
+
+  .imageSection .img {
+    max-height: 100% !important;
+    min-height: 100% !important;
+  }
+
+  .imageSection .blackDrop {
+    max-height: 57vw;
+    min-height: 57vw;
+  }
+
+  .title-1 {
+    height: 10vh;
+    padding: 15vh 10vh 6vh 10vh;
+    font-size: 1.8rem;
+    transform: translateY(-10vh);
+  }
+
+  .detailSection {
+    transform: translateY(-10vh);
+  }
+
+  .card {
     width: 100%;
-    flex-direction: column;
+    font-size: 1.2rem;
+    margin: 0!important;
+  }
+
+  .card-title {
+    padding-bottom: 15px;
+    font-size: 1.3rem;
+    display: block;
+    padding-bottom: 8px;
+  }
+
+  .card-footer {
+    font-size: 0.5rem !important ;
+  }
+
+  .title-2 {
+    height: 10vh;
+    padding: 6vh 10vh 6vh 10vh;
+    font-size: 1.8rem;
+    transform: translateY(-10vh);
+  }
+
+  .loginSection {
+    height: 20vh;
+    padding: auto;
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (min-width: 410px) {
+  hr.breakline {
+    border: 2px solid #fa9f0a;
+    border-radius: 5px;
+    width: 30%;
+    margin-left: 35%;
+  }
+
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .titleChinese {
+    font-size: 1.4rem;
+  }
+
+  .imageSection .text {
+    transform: translate(-50%, -30vw);
+    padding: 30px;
+  }
+
+  .imageSection .img {
+    max-height: 100% !important;
+    min-height: 100% !important;
+  }
+
+  .imageSection .blackDrop {
+    max-height: 57vw;
+    min-height: 57vw;
+  }
+
+  .title-1 {
+    height: 10vh;
+    padding: 15vh 10vh 6vh 10vh;
+    font-size: 2rem;
+    transform: translateY(-10vh);
+  }
+
+  .detailSection {
+    transform: translateY(-10vh);
+  }
+
+  .card {
+    width: 100%;
+    font-size: 1.3rem;
+    margin: 0!important;
+  }
+
+  .card-title {
+    padding-bottom: 15px;
+    font-size: 1.3rem;
+    padding-bottom: 5px;
+  }
+
+  .card-footer {
+    font-size: 1.2rem !important ;
+  }
+
+  .title-2 {
+    height: 10vh;
+    padding: 6vh 10vh 6vh 10vh;
+    font-size: 2rem;
+    transform: translateY(-10vh);
+  }
+
+  .loginSection {
+    height: 20vh;
+    padding: 30px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .titleChinese {
+    font-size: 1.5rem;
+  }
+
+  .imageSection .text {
+    transform: translate(-50%, -30vw);
+  }
+
+  .imageSection .img {
+    max-height: 90% !important;
+    min-height: 90% !important;
+  }
+
+  .imageSection .blackDrop {
+    max-height: 51vw;
+    min-height: 51vw;
+  }
+
+  .title-1 {
+    height: 5vh;
+    padding: 12vh 10vh 6vh 10vh;
+    font-size: 2rem;
+    transform: translateY(-10vh);
+  }
+
+  .title-2 {
+    height: 5vh;
+    padding: 12vh 10vh 6vh 10vh;
+    font-size: 2rem;
+    transform: translateY(-10vh);
+  }
+
+  .loginSection {
+    height: 30vh;
+    padding: 30px;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .title {
+    font-size: 2.3rem;
+  }
+
+  .titleChinese {
+    font-size: 2.3rem;
+  }
+
+  .imageSection .text {
+    transform: translate(-50%, -30vw);
+  }
+
+  .imageSection .blackDrop {
+    max-height: 51vw;
+    min-height: 51vw;
+  }
+
+  .title-1 {
+    height: 5vh;
+    padding: 12vh 10vh 7vh 10vh;
+    font-size: 2rem;
+    transform: translateY(-10vh);
+  }
+
+  .title-2 {
+    height: 5vh;
+    padding: 7vh 10vh 7vh 10vh;
+    font-size: 2rem;
+    transform: translateY(-10vh);
+  }
+
+  .detailSection {
+    width: 100%;
+    z-index: 3;
+    padding: 30px;
+    transform: translateY(-10vh);
+  }
+
+  .card {
+    width: 80%;
+    font-size: 1.5rem;
+    margin: 0 10% !important;
+  }
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .title {
+    font-size: 3rem;
+  }
+
+  .titleChinese {
+    font-size: 3rem;
+  }
+
+  .imageSection .text {
+    transform: translate(-50%, -28vw);
+  }
+
+  .title-1 {
+    height: 8vh;
+    padding: 11vh 10vh 10vh 10vh;
+    font-size: 2rem;
+    transform: translateY(-10vh);
+  }
+
+  .title-2 {
+    height: 8vh;
+    padding: 11vh 10vh 10vh 10vh;
+    font-size: 2rem;
+    transform: translateY(-10vh);
+  }
+
+  .detailSection {
+    width: 100%;
+    z-index: 3;
+    padding: 30px;
+    transform: translateY(-10vh);
+  }
+
+  .card {
+    width: 84%;
+    font-size: 1.5rem;
+    margin: 0 6% 0 10% !important;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .title {
+    font-size: 3rem;
+  }
+
+  .titleChinese {
+    font-size: 3rem;
+  }
+
+  .imageSection .text {
+    transform: translate(-50%, -29vw);
+  }
+
+  .imageSection .blackDrop {
+    max-height: 51vw;
+    min-height: 51vw;
+  }
+
+  .title-1 {
+    height: 10vh;
+    padding: 10vh;
+    font-size: 2rem;
+    transform: translateY(-10vh);
+  }
+
+  .title-1 {
+    height: 10vh;
+    padding: 10vh;
+    font-size: 2rem;
+    transform: translateY(-10vh);
+  }
+
+  .card {
+    width: 80%;
+    font-size: 1.5rem;
+    margin: 0 10% !important;
   }
 }
