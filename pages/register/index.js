@@ -81,7 +81,8 @@ const Register = () => {
       password: passwordValue,
       name: nameValue,
       phone: phoneValue,
-      isMember: isMemberValue
+      isMember: isMemberValue,
+      privilege: "user" 
     }
     const authResponse = await authCtx.registerWithPwd(user, new Date(new Date().getTime() + 3600000));
     if (authResponse && authResponse.errorMsg) {

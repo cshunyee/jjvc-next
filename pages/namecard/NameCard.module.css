@@ -2,6 +2,7 @@
   background-color: #fafafa;
   height: 100%;
   padding-bottom: 5%;
+  padding-top: 3%;
 }
 
 .container {
@@ -92,12 +93,34 @@ hr.breakline {
   color: #fafafa;
 }
 
-.button .disabled {
+.button:disabled {
   background-color: #2e7d43 !important;
   border-color: #2e7d43 !important;
 }
 
+.checkedInText {
+  text-align: center;
+  margin-top: 5px;
+}
+
+.checkInTableSection {
+  height: 100%;
+  background-color: #fafafa;
+  padding-bottom: 5%;
+  font-family: 'Ma Shan Zheng', cursive;
+}
+
+.text-green {
+  color: #c7f5a9;
+}
+
+.text-yellow {
+  color: #f7f194;
+}
+
 .footer {
+  position: relative;
+  bottom:0;
   padding: 5%;
   width: 100%;
   text-align: center;
@@ -109,6 +132,10 @@ hr.breakline {
 @media only screen and (max-width: 410px) {
   .imgCol {
     display: none;
+  }
+
+  .nameCardSection{
+    padding: 20% 0;
   }
 
   .container {
@@ -130,6 +157,10 @@ hr.breakline {
     width: 30%;
     padding: 5px 0;
     font-size: 1rem;
+  }
+
+  .checkedInText {
+    font-size: 1.1rem;
   }
 
 }
@@ -160,6 +191,10 @@ hr.breakline {
     padding: 2px 0;
     font-size: 1rem;
   }
+
+  .checkedInText {
+    font-size: 0.9rem;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -185,6 +220,10 @@ hr.breakline {
     font-size: 1rem;
   }
 
+  .checkedInText {
+    font-size: 1.2rem;
+  }
+
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -199,6 +238,10 @@ hr.breakline {
     width: 30%;
     padding: 8px 0;
     font-size: 1.1rem;
+  }
+
+  .checkedInText {
+    font-size: 1.4rem;
   }
 }
 
