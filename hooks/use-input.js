@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 const useInput = (validateInputRule, isFileType=false) =>{
-
   const [inputValue, setInputValue] = useState('');
   const [isTouched, setIsTouched] = useState(false);
 

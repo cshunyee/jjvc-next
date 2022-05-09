@@ -10,6 +10,15 @@
   margin: 5% auto 0 auto !important;
 }
 
+.editBtn {
+  display: inline-block;
+  text-align: right;
+  width: 100%;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
 .title {
   z-index: 4;
   text-align: center;
@@ -52,7 +61,8 @@ hr.breakline {
 }
 
 .imgCol {
-  display: block;
+  display: flex;
+  justify-content: center;
 }
 
 .rightCol {
@@ -110,6 +120,8 @@ hr.breakline {
   font-family: 'Ma Shan Zheng', cursive;
 }
 
+
+
 .text-green {
   color: #c7f5a9;
 }
@@ -163,6 +175,10 @@ hr.breakline {
     font-size: 1.1rem;
   }
 
+  .editBtn {
+    font-size: 1rem;
+  }
+
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -195,6 +211,10 @@ hr.breakline {
   .checkedInText {
     font-size: 0.9rem;
   }
+
+  .editBtn {
+    font-size: 0.9rem;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -222,6 +242,10 @@ hr.breakline {
 
   .checkedInText {
     font-size: 1.2rem;
+  }
+
+  .editBtn {
+    font-size: 1.1rem;
   }
 
 }

@@ -6,10 +6,12 @@ import Moment from 'react-moment';
 import moment from 'moment';
 import MomentTimeZone from 'moment-timezone';
 import { Card, Form, Container, Button, Row, Col, Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './NameCard.module.css';
 import bibleImg from './bible.jpg';
 import MyNavBar from '../../components/MyNavBar/MyNavBar';
 import CustomTable from '../../components/CustomTable/CustomTable';
+import EditDetailModal from '../../components/EditDetailModal/EditDetailModal';
 import AuthContext from '../../context/auth-context';
 import useInput from '../../hooks/use-input';
 import CustomInputGroup from '../../UI/CustomInputGroup';
@@ -35,6 +37,7 @@ const filterUserCheckInRecord = (records, uid) => {
 const NameCard = (props) => {
   // ------------ DECLARATION ------------ //
   const authCtx = useContext(AuthContext);
+  const [modalShow, setModalShow] = useState(false);
   const [hasCheckedIn, setHasCheckedIn] = useState(false);
   const [userCheckInRecord, setUserCheckInRecord] = useState({});
   const [checkInTime, setCheckInTime] = useState("");
@@ -94,6 +97,10 @@ const NameCard = (props) => {
     : `${styles.button} disabled`;
 
   // ------------ FUNCTION ------------ //
+  const showModal = () => {
+    setModalShow(true);
+  }
+
   const checkHasCheckedIn = async(uid) => {
     const checkInRecord = await getCheckInRecord();
     return checkInRecord ? true : false;
@@ -148,7 +155,6 @@ const NameCard = (props) => {
   const latestTime = moment('9:30 am', 'h:mm a');
   const checkInTimeClasses = compareTime.isBefore(latestTime) ? styles["text-green"] : styles["text-yellow"];
 
-
   // ------------ JXS RETURN ------------ //
   return <React.Fragment>
     <MyNavBar />
@@ -162,6 +168,9 @@ const NameCard = (props) => {
             <Row>
               <Col className={styles.imgCol}><Image src={bibleImg}></Image></Col>
               <Col className={styles.rightCol}>
+                <div className={styles.editBtn} onClick={showModal}>
+                  <FontAwesomeIcon icon="fa-solid fa-pen-to-square" /> 编辑
+                </div>
                 <Row className={styles.row}>
                   <Col>姓名 </Col>
                   <Col xs={7}><input className="form-control" value={userInfo.fullname} disabled></input></Col>
@@ -217,6 +226,16 @@ const NameCard = (props) => {
     <footer className={styles.footer}>
       <small>@ copyright 十玖</small>
     </footer>
+
+    <EditDetailModal
+        needHeader={false}
+        name={authCtx.name}
+        email={authCtx.email}
+        phone={authCtx.phone}
+        isMember={authCtx.isMember}
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
   </React.Fragment>
 }
 

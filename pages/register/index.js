@@ -9,10 +9,10 @@ import ButtonBlock from '../../UI/ButtonBlock';
 import AuthContext from '../../context/auth-context';
 import useInput from '../../hooks/use-input';
 
+
 const isNumeric = (val) => {
     return /^-?\d+$/.test(val);
 }
-
 
 const Register = () => {
   const authCtx = useContext(AuthContext);
@@ -82,7 +82,7 @@ const Register = () => {
       name: nameValue,
       phone: phoneValue,
       isMember: isMemberValue,
-      privilege: "user" 
+      privilege: "user"
     }
     const authResponse = await authCtx.registerWithPwd(user, new Date(new Date().getTime() + 3600000));
     if (authResponse && authResponse.errorMsg) {

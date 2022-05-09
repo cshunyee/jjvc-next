@@ -99,13 +99,6 @@ export const AuthContextProvider = (props) => {
       if (userRes && userRes.errorMsg) {
         return { errorMsg: userJson.error.message};
       }
-      // // window.localStorage.setItem('email', email);
-      // // window.localStorage.setItem('password', password);
-      // window.localStorage.setItem('token', resJson.idToken);
-      // window.localStorage.setItem('uid', resJson.localId);
-      // setToken(resJson.idToken);
-      // setUser({ idToken: resJson.idToken,  uid:resJson.localId, ...user });
-      // setLocalStorageData(resJson.idToken, expirationTime);
       return true;
     } catch (err) {
       await fetch(DELETE_Auth_TABLE, {method: "POST", body: JSON.stringify({idToken: resJson.idToken})});
@@ -199,14 +192,15 @@ export const AuthContextProvider = (props) => {
         email: user.email,
         name: user.name,
         phone: user.phone,
-        isMember: user.isMember
+        isMember: user.isMember,
+        privilege: "user"
       })
     });
     const userJson = await response.json();
     if (response.ok) {
       return true
     }
-    return {errorMsg: userJson.error.message};
+    return { errorMsg: userJson.error.message };
   },[]);
 
   const updateUser = useCallback(() => {
