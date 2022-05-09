@@ -19,7 +19,7 @@ let dummyUser = {
 
 let logoutTimer;
 
-const API_KEY = "AIzaSyAZhg5keu0308eBUF0NCX0b00DtQln39x0";
+const API_KEY = process.env.FIREBASE_API_KEY;
 const USER_TABLE = "https://jjvc-7665d-default-rtdb.asia-southeast1.firebasedatabase.app/users.json";
 const DELETE_Auth_TABLE = `https://identitytoolkit.googleapis.com/v1/accounts:delete?key=${API_KEY}`
 
