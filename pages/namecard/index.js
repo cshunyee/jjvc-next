@@ -169,7 +169,7 @@ const NameCard = (props) => {
               <Col className={styles.imgCol}><Image src={bibleImg}></Image></Col>
               <Col className={styles.rightCol}>
                 <div className={styles.editBtn} onClick={showModal}>
-                  <FontAwesomeIcon icon="pen-to-square" /> 编辑
+                  <FontAwesomeIcon icon="coffee" /> 编辑
                 </div>
                 <Row className={styles.row}>
                   <Col>姓名 </Col>
