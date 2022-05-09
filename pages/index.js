@@ -44,7 +44,7 @@ export default function Home() {
               <Col key={`card-${idx}`} auto="true">
                 <Card className={styles.card}>
                   <Card.Body>
-                    <h4>方式一·实体</h4><br/>
+                    <h4>{idx === 0 ? "方式一·实体" : "方式二·线上"}</h4><br/>
                     <span className={styles["card-title"]}>详情</span>
                     <Card.Text>
                       {/* <hr className={styles.breakline}/> */}

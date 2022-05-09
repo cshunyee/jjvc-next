@@ -99,12 +99,12 @@ export const AuthContextProvider = (props) => {
       if (userRes && userRes.errorMsg) {
         return { errorMsg: userJson.error.message};
       }
-      // window.localStorage.setItem('email', email);
-      // window.localStorage.setItem('password', password);
-      window.localStorage.setItem('token', resJson.idToken);
-      window.localStorage.setItem('uid', resJson.localId);
-      setToken(resJson.idToken);
-      setUser({ idToken: resJson.idToken,  uid:resJson.localId, ...user });
+      // // window.localStorage.setItem('email', email);
+      // // window.localStorage.setItem('password', password);
+      // window.localStorage.setItem('token', resJson.idToken);
+      // window.localStorage.setItem('uid', resJson.localId);
+      // setToken(resJson.idToken);
+      // setUser({ idToken: resJson.idToken,  uid:resJson.localId, ...user });
       // setLocalStorageData(resJson.idToken, expirationTime);
       return true;
     } catch (err) {
@@ -114,6 +114,7 @@ export const AuthContextProvider = (props) => {
   }
 
   const loginWithPasswordHandler = async (email, password, expirationTime) => {
+    console.log("login")
     const response = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`, {
       method: "POST",
       body: JSON.stringify({
