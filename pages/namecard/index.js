@@ -5,13 +5,15 @@ import Link from 'next/link';
 import Moment from 'react-moment';
 import moment from 'moment';
 import MomentTimeZone from 'moment-timezone';
-import { Card, Form, Container, Button, Row, Col, Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Card, Form, Container, Button, Row, Col,
+  Navbar, Nav, NavDropdown, FloatingLabel } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './NameCard.module.css';
 import bibleImg from './bible.jpg';
 import MyNavBar from '../../components/MyNavBar/MyNavBar';
 import CustomTable from '../../components/CustomTable/CustomTable';
 import EditDetailModal from '../../components/EditDetailModal/EditDetailModal';
+import ExportCheckInCSV from '../../components/ExportCheckInCSV/ExportCheckInCSV';
 import AuthContext from '../../context/auth-context';
 import useInput from '../../hooks/use-input';
 import CustomInputGroup from '../../UI/CustomInputGroup';
@@ -82,6 +84,32 @@ const NameCard = (props) => {
     inputBlurHandler: checkInTypeBlurHandler,
     reset: resetCheckInType
   } = useInput((value) => value.trim() !== '' && value.trim() !== null);
+
+  const {
+    value: fromDateValue,
+    isValid: fromDateIsValid,
+    hasError: fromDateHasError,
+    inputChangeHandler: fromDateChangeHandler,
+    inputBlurHandler: fromDateBlurHandler,
+    reset: resetFromDate
+  } = useInput((value) => value.trim() !== '' && value.trim() !== null);
+
+  const {
+    value: toDateValue,
+    isValid: toDateIsValid,
+    hasError: toDateHasError,
+    inputChangeHandler: toDateChangeHandler,
+    inputBlurHandler: toDateBlurHandler,
+    reset: resetToDate
+  } = useInput((value) => value.trim() !== '' && value.trim() !== null);
+
+  useEffect(() => {
+    if (fromDateValue || toDateValue) {
+      return
+    }
+    fromDateChangeHandler({target:{value: moment(new Date()).format("YYYY-MM-DD")}});
+    toDateChangeHandler({target:{value: moment(new Date()).format("YYYY-MM-DD")}});
+  },[]);
 
   let formIsValid = false;
   if (checkInTypeIsValid) {
@@ -219,7 +247,25 @@ const NameCard = (props) => {
     {
       authCtx.privilege === "admin" && <section className={styles.checkInTableSection}>
         <Container>
-          <CustomTable rows={props.checkInRecords}/>
+          <Row>
+            <Col>
+              <FloatingLabel controlId="floatingInput" label="From" className="mb-3">
+                <Form.Control type="date" value={fromDateValue} onChange={fromDateChangeHandler}
+                  max={moment(new Date()).format("YYYY-MM-DD")}/>
+              </FloatingLabel>
+            </Col>
+            <Col xs={1} className="text-center mt-3">至</Col>
+            <Col>
+              <FloatingLabel controlId="floatingInput" label="To" className="mb-3">
+                <Form.Control type="date" value={toDateValue} onChange={toDateChangeHandler}
+                  max={moment(new Date()).format("YYYY-MM-DD")}/>
+              </FloatingLabel>
+            </Col>
+            <Col className="text-left m-2">
+              <ExportCheckInCSV checkInRecords={props.checkInRecords} fDate={fromDateValue} tDate={toDateValue} />
+            </Col>
+          </Row>
+          <CustomTable rows={props.checkInRecords} fDate={fromDateValue} tDate={toDateValue}/>
         </Container>
       </section>
     }
