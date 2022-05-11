@@ -5,13 +5,14 @@ import Link from 'next/link';
 import Moment from 'react-moment';
 import moment from 'moment';
 import MomentTimeZone from 'moment-timezone';
-import { Card, Form, Container, Button, Row, Col, Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Card, Form, Container, Button, Row, Col,
+  Navbar, Nav, NavDropdown, FloatingLabel } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './NameCard.module.css';
 import bibleImg from './bible.jpg';
 import MyNavBar from '../../components/MyNavBar/MyNavBar';
-import CustomTable from '../../components/CustomTable/CustomTable';
 import EditDetailModal from '../../components/EditDetailModal/EditDetailModal';
+import CheckInAdminTable from '../../components/CheckInAdminTable/CheckInAdminTable';
 import AuthContext from '../../context/auth-context';
 import useInput from '../../hooks/use-input';
 import CustomInputGroup from '../../UI/CustomInputGroup';
@@ -47,7 +48,8 @@ const NameCard = (props) => {
     month: new Date().getMonth() + 1,
     year: new Date().getFullYear()
   });
-  const fullDate = `${currDate.day}-${currDate.month}-${currDate.year}`;
+  const fullDate = moment(new Date()).format("YYYY-MM-DD");
+  // `${currDate.day}-${currDate.month}-${currDate.year}`;
   const userInfo = {
     fullname: authCtx.name || "",
     phone: authCtx.phone || "",
@@ -217,11 +219,7 @@ const NameCard = (props) => {
     </section>
 
     {
-      authCtx.privilege === "admin" && <section className={styles.checkInTableSection}>
-        <Container>
-          <CustomTable rows={props.checkInRecords}/>
-        </Container>
-      </section>
+      authCtx.privilege === "admin" && <CheckInAdminTable rows={props.checkInRecords} />
     }
     <footer className={styles.footer}>
       <small>@ copyright 十玖</small>
@@ -240,7 +238,8 @@ const NameCard = (props) => {
 }
 
 export async function getStaticProps(context) {
-  const fullDate = `${new Date().getDate()}-${new Date().getMonth() + 1}-${new Date().getFullYear()}`;
+  const fullDate = moment(new Date()).format("YYYY-MM-DD");
+  // `${new Date().getDate()}-${new Date().getMonth() + 1}-${new Date().getFullYear()}`;
   const response = await fetch(`${CHECKIN_TABLE}?orderBy="date"&equalTo="${fullDate}"`);
   const resJson = await response.json();
   const records = Object.values(resJson);
