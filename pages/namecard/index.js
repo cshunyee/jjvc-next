@@ -11,9 +11,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './NameCard.module.css';
 import bibleImg from './bible.jpg';
 import MyNavBar from '../../components/MyNavBar/MyNavBar';
-import CustomTable from '../../components/CustomTable/CustomTable';
 import EditDetailModal from '../../components/EditDetailModal/EditDetailModal';
-import ExportCheckInCSV from '../../components/ExportCheckInCSV/ExportCheckInCSV';
+import CheckInAdminTable from '../../components/CheckInAdminTable/CheckInAdminTable';
 import AuthContext from '../../context/auth-context';
 import useInput from '../../hooks/use-input';
 import CustomInputGroup from '../../UI/CustomInputGroup';
@@ -49,7 +48,8 @@ const NameCard = (props) => {
     month: new Date().getMonth() + 1,
     year: new Date().getFullYear()
   });
-  const fullDate = `${currDate.day}-${currDate.month}-${currDate.year}`;
+  const fullDate = moment(new Date()).format("YYYY-MM-DD");
+  // `${currDate.day}-${currDate.month}-${currDate.year}`;
   const userInfo = {
     fullname: authCtx.name || "",
     phone: authCtx.phone || "",
@@ -84,32 +84,6 @@ const NameCard = (props) => {
     inputBlurHandler: checkInTypeBlurHandler,
     reset: resetCheckInType
   } = useInput((value) => value.trim() !== '' && value.trim() !== null);
-
-  const {
-    value: fromDateValue,
-    isValid: fromDateIsValid,
-    hasError: fromDateHasError,
-    inputChangeHandler: fromDateChangeHandler,
-    inputBlurHandler: fromDateBlurHandler,
-    reset: resetFromDate
-  } = useInput((value) => value.trim() !== '' && value.trim() !== null);
-
-  const {
-    value: toDateValue,
-    isValid: toDateIsValid,
-    hasError: toDateHasError,
-    inputChangeHandler: toDateChangeHandler,
-    inputBlurHandler: toDateBlurHandler,
-    reset: resetToDate
-  } = useInput((value) => value.trim() !== '' && value.trim() !== null);
-
-  useEffect(() => {
-    if (fromDateValue || toDateValue) {
-      return
-    }
-    fromDateChangeHandler({target:{value: moment(new Date()).format("YYYY-MM-DD")}});
-    toDateChangeHandler({target:{value: moment(new Date()).format("YYYY-MM-DD")}});
-  },[]);
 
   let formIsValid = false;
   if (checkInTypeIsValid) {
@@ -245,29 +219,7 @@ const NameCard = (props) => {
     </section>
 
     {
-      authCtx.privilege === "admin" && <section className={styles.checkInTableSection}>
-        <Container>
-          <Row>
-            <Col>
-              <FloatingLabel controlId="floatingInput" label="From" className="mb-3">
-                <Form.Control type="date" value={fromDateValue} onChange={fromDateChangeHandler}
-                  max={moment(new Date()).format("YYYY-MM-DD")}/>
-              </FloatingLabel>
-            </Col>
-            <Col xs={1} className="text-center mt-3">至</Col>
-            <Col>
-              <FloatingLabel controlId="floatingInput" label="To" className="mb-3">
-                <Form.Control type="date" value={toDateValue} onChange={toDateChangeHandler}
-                  max={moment(new Date()).format("YYYY-MM-DD")}/>
-              </FloatingLabel>
-            </Col>
-            <Col className="text-left m-2">
-              <ExportCheckInCSV checkInRecords={props.checkInRecords} fDate={fromDateValue} tDate={toDateValue} />
-            </Col>
-          </Row>
-          <CustomTable rows={props.checkInRecords} fDate={fromDateValue} tDate={toDateValue}/>
-        </Container>
-      </section>
+      authCtx.privilege === "admin" && <CheckInAdminTable rows={props.checkInRecords} />
     }
     <footer className={styles.footer}>
       <small>@ copyright 十玖</small>
@@ -286,7 +238,8 @@ const NameCard = (props) => {
 }
 
 export async function getStaticProps(context) {
-  const fullDate = `${new Date().getDate()}-${new Date().getMonth() + 1}-${new Date().getFullYear()}`;
+  const fullDate = moment(new Date()).format("YYYY-MM-DD");
+  // `${new Date().getDate()}-${new Date().getMonth() + 1}-${new Date().getFullYear()}`;
   const response = await fetch(`${CHECKIN_TABLE}?orderBy="date"&equalTo="${fullDate}"`);
   const resJson = await response.json();
   const records = Object.values(resJson);

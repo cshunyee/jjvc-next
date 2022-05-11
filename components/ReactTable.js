@@ -1,5 +1,6 @@
 import React from 'react'
-import { useTable, usePagination } from 'react-table'
+import { useTable, usePagination, useSortBy } from 'react-table'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 const ReactTable = ({ columns, data, onRowClick }) => {
@@ -27,6 +28,7 @@ const ReactTable = ({ columns, data, onRowClick }) => {
       data,
       initialState: { pageIndex: 0 },
     },
+    useSortBy,
     usePagination
   )
 
@@ -55,7 +57,15 @@ const ReactTable = ({ columns, data, onRowClick }) => {
           {headerGroups.map((headerGroup, i) => (
             <tr {...headerGroup.getHeaderGroupProps()} key={`table-header-${i}`}>
               {headerGroup.headers.map(column => (
-                <th {...column.getHeaderProps()} key={`table-header-${column.render('Header')}`}>{column.render('Header')}</th>
+                <th {...column.getHeaderProps(column.getSortByToggleProps())} key={`table-header-${column.render('Header')}`}>{column.render('Header')}
+                  <span>
+                    {column.isSorted
+                      ? column.isSortedDesc
+                        ? <FontAwesomeIcon icon="sort-down"/>
+                        : <FontAwesomeIcon icon="sort-up"/>
+                      : ''}
+                  </span>
+                </th>
               ))}
             </tr>
           ))}

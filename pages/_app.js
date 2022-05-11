@@ -5,12 +5,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import '@fortawesome/fontawesome-svg-core/styles.css'; //import this else will break the style of fontawesome
-import { faCoffee,faUserEdit } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee,faUserEdit, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons';
 
 import { AuthContextProvider } from '../context/auth-context';
 
 
-library.add(fab, faCoffee, faUserEdit)
+library.add(fab, faCoffee, faUserEdit, faSortDown, faSortUp)
 
 
 function MyApp({ Component, pageProps }) {
