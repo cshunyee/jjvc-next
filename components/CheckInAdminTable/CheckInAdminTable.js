@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FloatingLabel, Row, Col, Form, Container } from 'react-bootstrap';
 import moment from 'moment';
+import MomentTimeZone from 'moment-timezone';
 import styles from './CheckInAdminTable.module.css';
 import ExportCheckInCSV from '../ExportCheckInCSV/ExportCheckInCSV';
 import CustomTable from '../CustomTable/CustomTable';
@@ -52,7 +53,17 @@ const CheckInAdminTable = ({rows}) => {
       const response = await fetch(`${CHECKIN_TABLE}?orderBy="date"&startAt="${fromDate}"&endAt="${toDate}"`);
       const resJson = await response.json();
       const results = Object.values(resJson);
-      setRecords(results)
+
+      const finalData = results.map((row, i) => {
+        let { name:nameDisplay, isMember, type, date, timeStamp } = row;
+        let dateSplit = date.split("-");
+        let timeDisplay = MomentTimeZone.tz(timeStamp, "Asia/Singapore").format("h:mm a");
+        let isMemberDisplay = isMember === "y" ? "会友" : "非会友";
+        let typeDisplay = type === "online" ? "线上" : "实体";
+        let dateDisplay = `${dateSplit[1]}月 ${dateSplit[2]}日 ${dateSplit[0]}年`;
+        return { id:i+1 ,name:nameDisplay, isMember:isMemberDisplay, type:typeDisplay, date:dateDisplay, time:timeDisplay }
+      });
+      setRecords(finalData)
     }
     fetchData();
   },[fromDateValue, toDateValue, rows]);
