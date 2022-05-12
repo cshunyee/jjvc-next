@@ -72,7 +72,7 @@ const NameCard = (props) => {
     if (!hasCheckedIn && record) {
       setHasCheckedIn(true);
       setUserCheckInRecord(record);
-      setCheckInTime(getTime("h:mm:ss a"), record.timeStamp);
+      setCheckInTime(moment(record.timeStamp).format("h:mm:ss a"));
     }
   })
 
