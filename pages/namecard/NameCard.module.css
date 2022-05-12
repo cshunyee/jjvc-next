@@ -108,6 +108,10 @@ hr.breakline {
   border-color: #2e7d43 !important;
 }
 
+.buttonAlertText {
+  font-size: 1rem;
+}
+
 .checkedInText {
   text-align: center;
   margin-top: 5px;
@@ -170,12 +174,16 @@ hr.breakline {
     font-size: 1rem;
   }
 
+  .buttonAlertText {
+    font-size: 0.9rem;
+  }
+
 }
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (min-width: 410px) {
   .imgCol {
-    display: block;
+    display: none;
   }
 
   .container {
@@ -183,7 +191,7 @@ hr.breakline {
   }
 
   .card {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     width: 100%;
   }
 
@@ -195,16 +203,27 @@ hr.breakline {
   .button {
     margin: 6% 0 2% 0;
     width: 30%;
-    padding: 2px 0;
+    padding: 7px 0;
     font-size: 1rem;
   }
 
   .checkedInText {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
   }
 
   .editBtn {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
+  }
+
+  .buttonAlertText {
+    font-size: 1rem;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 560px) {
+  .imgCol {
+    display: flex;
   }
 }
 
@@ -237,6 +256,10 @@ hr.breakline {
 
   .editBtn {
     font-size: 1.1rem;
+  }
+
+  .buttonAlertText {
+    font-size: 1rem;
   }
 
 }

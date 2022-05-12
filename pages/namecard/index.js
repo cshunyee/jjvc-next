@@ -139,6 +139,7 @@ const NameCard = (props) => {
   }
 
   const onCheckIn = async() => {
+    event.preventDefault();
     const userHasCheckedIn = await checkHasCheckedIn(authCtx.uid);
     if (userHasCheckedIn) {
       setHasCheckedIn(true);
@@ -167,6 +168,7 @@ const NameCard = (props) => {
           <hr className={styles.breakline} />
         </div>
         <Card border="light" bg="light" text="dark" className={styles.card}>
+          <Form onSubmit={onCheckIn}>
             <Row>
               <Col className={styles.imgCol}><Image src={bibleImg}></Image></Col>
               <Col className={styles.rightCol}>
@@ -207,13 +209,15 @@ const NameCard = (props) => {
                   </Col>
                 </Row>
                 <div className="text-center">
-                  <Button className={submitBtnClasses} onClick={onCheckIn}>点名</Button>
+                  <Button className={submitBtnClasses} type="submit">点名</Button><br />
+                  {!hasCheckedIn && <span className={styles.buttonAlertText}><span className="text-warning">*</span><i>请选择崇拜方式</i></span>}
                 </div>
                 <div className={styles.checkedInText}>
                   {hasCheckedIn && <span>今日已点名 —— <span className={checkInTimeClasses}>{checkInTime}</span></span>}
                 </div>
               </Col>
             </Row>
+          </Form>
         </Card>
       </Container>
     </section>
