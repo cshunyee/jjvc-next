@@ -140,7 +140,7 @@ const Register = () => {
           </Alert>}
           <Form onSubmit={onRegister}>
             <CustomInputGroup
-                hasValidation="true" className={emailInputClasses} prepend="" placeholder="用户名 Username" type="email" inputClass="p-3" onChange={emailChangeHandler} onBlur={emailBlurHandler} value={emailValue}
+                hasValidation="true" className={emailInputClasses} prepend="" placeholder="用户名(电子邮件) Email" type="email" inputClass="p-3" onChange={emailChangeHandler} onBlur={emailBlurHandler} value={emailValue}
                 autoComplete="username"
                 isInvalid={emailHasError} feedback="请输入正确的电子邮件"/>
             <CustomInputGroup
