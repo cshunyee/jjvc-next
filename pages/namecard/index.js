@@ -247,6 +247,7 @@ export async function getStaticProps(context) {
   const response = await fetch(`${CHECKIN_TABLE}?orderBy="date"&equalTo="${fullDate}"`);
   const resJson = await response.json();
   const records = Object.values(resJson);
+  console.log(records)
   let todayCheckInRecords = records.length > 0 ? records : [];
   return {
     props: {

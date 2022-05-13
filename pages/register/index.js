@@ -152,7 +152,7 @@ const Register = () => {
                 autoComplete="phone"
                 isInvalid={phoneHasError} feedback="电话号码不能为空 / 只能包含数字"/>
             <CustomInputGroup
-                hasValidation="true" className={isMemberInputClasses} type="select" placeholder="本教会会友" inputClass="p-3" onChange={isMemberChangeHandler} onBlur={isMemberBlurHandler} customKey="register-isMember"
+                hasValidation="true" className={isMemberInputClasses} type="select" placeholder="是否为本教会会友" inputClass="p-3" onChange={isMemberChangeHandler} onBlur={isMemberBlurHandler} customKey="register-isMember"
                 value={isMemberValue} option={[{display:"是", value:"y"}, {display: "不是", value:"n"}]}
                 isInvalid={isMemberHasError} feedback="请选其一"/>
             <CustomInputGroup
